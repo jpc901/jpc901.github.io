@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jpc901.github.io/2022/10/24/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88LCA/</loc>
+    <lastmod>2022-10-24</lastmod>
+  </url>
+  <url>
+    <loc>https://jpc901.github.io/2022/03/07/%E5%9B%BE%E8%AE%BA/</loc>
+    <lastmod>2022-10-24</lastmod>
+  </url>
+  <url>
     <loc>https://jpc901.github.io/2022/06/09/%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1/</loc>
     <lastmod>2022-06-10</lastmod>
   </url>
@@ -18,11 +26,7 @@
   </url>
   <url>
     <loc>https://jpc901.github.io/2022/04/14/linux%E4%B8%8B%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%90%8C%E6%AD%A5%E4%BA%92%E6%96%A5/</loc>
-    <lastmod>2022-04-18</lastmod>
-  </url>
-  <url>
-    <loc>https://jpc901.github.io/2022/03/07/%E5%9B%BE%E8%AE%BA/</loc>
-    <lastmod>2022-04-14</lastmod>
+    <lastmod>2022-04-20</lastmod>
   </url>
   <url>
     <loc>https://jpc901.github.io/2022/02/22/gcd%E3%80%81%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0%E3%80%81%E8%B4%A8%E6%95%B0%E3%80%81%E5%9F%83%E6%B0%8F%E7%AD%9B%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/</loc>

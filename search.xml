@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>最近公共祖先</title>
+      <link href="/2022/10/24/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88LCA/"/>
+      <url>/2022/10/24/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88LCA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="最近公共祖先"><a href="#最近公共祖先" class="headerlink" title="最近公共祖先"></a>最近公共祖先</h1><p>求最近公共祖先的方法</p><ol><li><p>向上标记法O(n)</p></li><li><p>倍增</p><p>fa[i, j]表示从i开始，向上走2^j步所能走到的节点。0 &lt;= j &lt;= logn</p><p>depth[i] 表示深度</p><p>哨兵：如果从i开始向上跳2^j步跳过根节点，fa[i, j] = 0, depth[0] = 0;</p><p>步骤：</p><ul><li>先让两个点跳到同一层</li><li>让两个点同时往上跳，一直跳到他们的最近公共祖先的下一层。</li></ul><p>预处理O(nlogn)</p><p>查询O(logn)</p></li><li><p>Tarjan——离线求LCA</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 题解、笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法模板</title>
       <link href="/2022/06/10/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/"/>
       <url>/2022/06/10/%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/</url>
