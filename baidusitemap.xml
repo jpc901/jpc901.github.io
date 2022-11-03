@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jpc901.github.io/2022/11/03/Mysql/</loc>
+    <lastmod>2022-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://jpc901.github.io/2022/11/03/Maven%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2022-11-03</lastmod>
+  </url>
+  <url>
+    <loc>https://jpc901.github.io/2022/11/03/JDBC/</loc>
+    <lastmod>2022-11-03</lastmod>
+  </url>
+  <url>
     <loc>https://jpc901.github.io/2022/10/24/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88LCA/</loc>
     <lastmod>2022-10-24</lastmod>
   </url>
