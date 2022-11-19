@@ -253,14 +253,14 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/JavaWeb/</loc>
+    <loc>https://jpc901.github.io/tags/SpringBoot/</loc>
     <lastmod>2022-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/SpringBoot/</loc>
+    <loc>https://jpc901.github.io/tags/JavaWeb/</loc>
     <lastmod>2022-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -325,13 +325,6 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/categories/JavaWeb/</loc>
-    <lastmod>2022-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpc901.github.io/categories/SpringBoot/</loc>
     <lastmod>2022-11-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -340,6 +333,13 @@
   
   <url>
     <loc>https://jpc901.github.io/categories/%E6%A8%A1%E6%9D%BF/</loc>
+    <lastmod>2022-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpc901.github.io/categories/JavaWeb/</loc>
     <lastmod>2022-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
