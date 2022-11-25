@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Go语言是什么</title>
+      <link href="/2022/11/23/1-%E4%BB%80%E4%B9%88%E6%98%AFgo%E8%AF%AD%E8%A8%80/"/>
+      <url>/2022/11/23/1-%E4%BB%80%E4%B9%88%E6%98%AFgo%E8%AF%AD%E8%A8%80/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Go语言是什么"><a href="#Go语言是什么" class="headerlink" title="Go语言是什么"></a>Go语言是什么</h1><p>Go语言是一个开源的编程语言,它能让构造简单,可靠且高效的软件变得容易。</p><ul><li>Go语言现代,快速,包含强大完善的标准库.</li><li>Go语言内置并发goroutine.</li><li>Go语言使用接口作为代码可重用性的构建块.</li></ul><p>Go语言的优点：</p><ul><li>编译成机器码</li><li><strong>静态类型语言</strong>：静态类型的语言就是可以在编译的时候检查出来隐藏的大多数问题，但是有很多的包可以使用,写起来的效率很高，Go最大的特色, <strong>天生的支持并发</strong>（可以充分的利用多核,很容易的使用并发）</li><li><strong>内置runtime</strong>，支持垃圾回收</li><li><strong>丰富的标准库</strong>（网络库强大）</li><li><strong>跨平台编译</strong></li></ul><p>Go语言学习开始第一步（Hello World!）</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span>  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">   fmt.Println(<span class="string">&quot;Hello, World&quot;</span>)  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Golang </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>学习Golang之前的一些感想</title>
+      <link href="/2022/11/22/%E5%AD%A6%E4%B9%A0Golang%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E6%83%B3/"/>
+      <url>/2022/11/22/%E5%AD%A6%E4%B9%A0Golang%E4%B9%8B%E5%89%8D%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E6%83%B3/</url>
+      
+        <content type="html"><![CDATA[<p>因为在大一大二主要是学习一些算法。并没有接触到什么非常有技术的东西。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 个人学习感想 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 个人学习感想 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>javaweb学习以及相关框架使用</title>
       <link href="/2022/11/20/javaweb/"/>
       <url>/2022/11/20/javaweb/</url>
@@ -364,31 +414,6 @@
       <categories>
           
           <category> 题解 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Algorithm </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>gcd、分解质因数、质数、埃氏筛、快速幂</title>
-      <link href="/2022/02/22/gcd%E3%80%81%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0%E3%80%81%E8%B4%A8%E6%95%B0%E3%80%81%E5%9F%83%E6%B0%8F%E7%AD%9B%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/"/>
-      <url>/2022/02/22/gcd%E3%80%81%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0%E3%80%81%E8%B4%A8%E6%95%B0%E3%80%81%E5%9F%83%E6%B0%8F%E7%AD%9B%E3%80%81%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
-      
-        <content type="html"><![CDATA[<h2 id="最大公因数"><a href="#最大公因数" class="headerlink" title="最大公因数"></a>最大公因数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a, ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">ll temp = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (temp = a % b)</span><br><span class="line">&#123;</span><br><span class="line">a = b;</span><br><span class="line">b = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a, ll b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="built_in">gcd</span>(b, a % b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="分解质因数"><a href="#分解质因数" class="headerlink" title="分解质因数"></a>分解质因数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">divide</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i =  <span class="number">2</span>; i &lt;= n / i; i++)&#123;</span><br><span class="line"><span class="keyword">if</span>(n % i == <span class="number">0</span>)&#123;</span><br><span class="line"><span class="type">int</span> s = <span class="number">0</span>; <span class="comment">//个数</span></span><br><span class="line"><span class="keyword">while</span>(n % i == <span class="number">0</span>)&#123;</span><br><span class="line">n /= i;</span><br><span class="line">s ++;</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, i, s);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(n &gt; <span class="number">1</span>)<span class="built_in">printf</span>(<span class="string">&quot;%d %d\n&quot;</span>, n, <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="判定质数（试除法）"><a href="#判定质数（试除法）" class="headerlink" title="判定质数（试除法）"></a>判定质数（试除法）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断是否是质数</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(n &lt; <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n / i; i++)&#123;</span><br><span class="line"><span class="keyword">if</span>(n % i == <span class="number">0</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//快速幂</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qmi</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> k, <span class="type">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k)&#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = (LL)res * a % p;</span><br><span class="line">        a = (LL)a * a % p;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="埃氏筛"><a href="#埃氏筛" class="headerlink" title="埃氏筛"></a>埃氏筛</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_prime</span><span class="params">(<span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i]) primes[cnt++]=i;<span class="comment">//把素数存起来</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=i;j&lt;=n;j+=i)&#123;<span class="comment">//不管是合数还是质数，都用来筛掉后面它的倍数</span></span><br><span class="line">            st[j]=<span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 模板 </category>
           
       </categories>
       
