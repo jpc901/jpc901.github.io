@@ -453,13 +453,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/tags/HTTP/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.top/tags/JDBC/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -481,6 +474,20 @@
   </url>
   
   <url>
+    <loc>https://jpcly.top/tags/HTTP/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/tags/Maven/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.top/tags/JSP/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -495,20 +502,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/tags/Maven/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/tags/mysql/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.top/tags/MyBatis/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -516,7 +509,7 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/tags/SpringBoot/</loc>
+    <loc>https://jpcly.top/tags/mysql/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -538,6 +531,13 @@
   
   <url>
     <loc>https://jpcly.top/tags/Response/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/tags/SpringBoot/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -630,14 +630,14 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/categories/JavaWeb/</loc>
+    <loc>https://jpcly.top/categories/JDBC/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpcly.top/categories/JDBC/</loc>
+    <loc>https://jpcly.top/categories/JavaWeb/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -651,14 +651,14 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/categories/mysql/</loc>
+    <loc>https://jpcly.top/categories/MyBatis/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpcly.top/categories/MyBatis/</loc>
+    <loc>https://jpcly.top/categories/mysql/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
