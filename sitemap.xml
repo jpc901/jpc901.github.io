@@ -453,41 +453,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/tags/operating-system/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/tags/Algorithm/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/tags/Computer-Networking/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.top/tags/HTTP/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -537,6 +502,13 @@
   </url>
   
   <url>
+    <loc>https://jpcly.top/tags/mysql/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.top/tags/MyBatis/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -544,7 +516,7 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/tags/mysql/</loc>
+    <loc>https://jpcly.top/tags/SpringBoot/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -566,13 +538,6 @@
   
   <url>
     <loc>https://jpcly.top/tags/Response/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/tags/SpringBoot/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -607,7 +572,42 @@
   </url>
   
   <url>
+    <loc>https://jpcly.top/tags/operating-system/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/tags/Computer-Networking/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.top/tags/js/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/tags/Algorithm/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -624,41 +624,6 @@
   
   <url>
     <loc>https://jpcly.top/categories/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/categories/%E9%A2%98%E8%A7%A3/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/categories/%E9%A2%98%E8%A7%A3%E3%80%81%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2022-11-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.top/categories/%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -686,14 +651,14 @@
   </url>
   
   <url>
-    <loc>https://jpcly.top/categories/MyBatis/</loc>
+    <loc>https://jpcly.top/categories/mysql/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpcly.top/categories/mysql/</loc>
+    <loc>https://jpcly.top/categories/MyBatis/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -707,7 +672,42 @@
   </url>
   
   <url>
+    <loc>https://jpcly.top/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.top/categories/JavaScript/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/categories/%E9%A2%98%E8%A7%A3/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/categories/%E9%A2%98%E8%A7%A3%E3%80%81%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.top/categories/%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2022-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
