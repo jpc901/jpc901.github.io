@@ -483,8 +483,6 @@
             
             <tag> JSP </tag>
             
-            <tag> MVC模式 </tag>
-            
         </tags>
       
     </entry>
@@ -663,12 +661,14 @@
       
       <categories>
           
-          <category> MyBatis </category>
+          <category> JavaWeb </category>
           
       </categories>
       
       
         <tags>
+            
+            <tag> 数据库 </tag>
             
             <tag> JavaWeb </tag>
             
@@ -690,7 +690,7 @@
       
       <categories>
           
-          <category> Maven </category>
+          <category> JavaWeb </category>
           
       </categories>
       
@@ -717,7 +717,7 @@
       
       <categories>
           
-          <category> JDBC </category>
+          <category> JavaWeb </category>
           
       </categories>
       
@@ -753,6 +753,8 @@
       
         <tags>
             
+            <tag> 数据库 </tag>
+            
             <tag> mysql </tag>
             
         </tags>
@@ -771,7 +773,7 @@
       
       <categories>
           
-          <category> 题解、笔记 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
@@ -796,7 +798,7 @@
       
       <categories>
           
-          <category> 模板 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
@@ -821,14 +823,14 @@
       
       <categories>
           
-          <category> JavaScript </category>
+          <category> 前端技术 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> js </tag>
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -921,7 +923,7 @@
       
       <categories>
           
-          <category> 题解 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
@@ -950,7 +952,7 @@
       
       <categories>
           
-          <category> 题解 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
@@ -975,7 +977,7 @@
       
       <categories>
           
-          <category> 题解 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
@@ -983,6 +985,8 @@
         <tags>
             
             <tag> Algorithm </tag>
+            
+            <tag> 数据结构 </tag>
             
         </tags>
       
@@ -1000,7 +1004,7 @@
       
       <categories>
           
-          <category> 题解 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
@@ -1025,7 +1029,7 @@
       
       <categories>
           
-          <category> 题解 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
@@ -1075,7 +1079,7 @@
       
       <categories>
           
-          <category> 题解 </category>
+          <category> 算法题解 </category>
           
       </categories>
       
