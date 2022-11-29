@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jpc901.github.io/2022/11/29/gin/4-gorm%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</loc>
+    <lastmod>2022-11-29</lastmod>
+  </url>
+  <url>
+    <loc>https://jpc901.github.io/2022/11/29/gin/3-gin%E4%B8%AD%E9%97%B4%E4%BB%B6/</loc>
+    <lastmod>2022-11-29</lastmod>
+  </url>
+  <url>
     <loc>https://jpc901.github.io/2022/11/28/gin/2-gin%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2022-11-29</lastmod>
   </url>

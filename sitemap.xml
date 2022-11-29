@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jpc901.github.io/2022/11/29/gin/4-gorm%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</loc>
+    
+    <lastmod>2022-11-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpc901.github.io/2022/11/29/gin/3-gin%E4%B8%AD%E9%97%B4%E4%BB%B6/</loc>
+    
+    <lastmod>2022-11-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jpc901.github.io/2022/11/28/gin/2-gin%E6%A1%86%E6%9E%B6/</loc>
     
     <lastmod>2022-11-29</lastmod>
@@ -464,7 +482,7 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/Go/</loc>
+    <loc>https://jpc901.github.io/tags/gorm/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -478,28 +496,14 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
+    <loc>https://jpc901.github.io/tags/Go/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/HTTP/</loc>
-    <lastmod>2022-11-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpc901.github.io/tags/JavaWeb/</loc>
-    <lastmod>2022-11-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpc901.github.io/tags/JSP/</loc>
+    <loc>https://jpc901.github.io/tags/Computer-Networking/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -520,14 +524,35 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/Maven/</loc>
+    <loc>https://jpc901.github.io/tags/JavaWeb/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/Computer-Networking/</loc>
+    <loc>https://jpc901.github.io/tags/JavaScript/</loc>
+    <lastmod>2022-11-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpc901.github.io/tags/HTTP/</loc>
+    <lastmod>2022-11-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpc901.github.io/tags/JSP/</loc>
+    <lastmod>2022-11-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpc901.github.io/tags/Maven/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -541,7 +566,7 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/mysql/</loc>
+    <loc>https://jpc901.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -604,7 +629,7 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/tags/JavaScript/</loc>
+    <loc>https://jpc901.github.io/tags/mysql/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -648,7 +673,7 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
+    <loc>https://jpc901.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -662,14 +687,14 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://jpc901.github.io/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/categories/mysql/</loc>
+    <loc>https://jpc901.github.io/categories/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -683,7 +708,7 @@
   </url>
   
   <url>
-    <loc>https://jpc901.github.io/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://jpc901.github.io/categories/mysql/</loc>
     <lastmod>2022-11-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
