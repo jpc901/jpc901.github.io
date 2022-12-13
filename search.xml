@@ -967,9 +967,9 @@
       
         <tags>
             
-            <tag> JavaWeb </tag>
-            
             <tag> 数据库 </tag>
+            
+            <tag> JavaWeb </tag>
             
             <tag> MyBatis </tag>
             
@@ -1023,11 +1023,11 @@
       
         <tags>
             
-            <tag> JavaWeb </tag>
-            
             <tag> JDBC </tag>
             
             <tag> 数据库 </tag>
+            
+            <tag> JavaWeb </tag>
             
         </tags>
       
