@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jpcly.cn/archives/3bab1fc2.html</loc>
+    
+    <lastmod>2022-12-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/archives/30e5e055.html</loc>
+    
+    <lastmod>2022-12-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.cn/archives/c43c0113.html</loc>
     
     <lastmod>2022-12-13</lastmod>
@@ -527,6 +545,41 @@
   </url>
   
   <url>
+    <loc>https://jpcly.cn/tags/gin/</loc>
+    <lastmod>2022-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/gorm/</loc>
+    <lastmod>2022-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/Go/</loc>
+    <lastmod>2022-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
+    <lastmod>2022-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/HTTP/</loc>
+    <lastmod>2022-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.cn/tags/JDBC/</loc>
     <lastmod>2022-12-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -548,7 +601,7 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/HTTP/</loc>
+    <loc>https://jpcly.cn/tags/Maven/</loc>
     <lastmod>2022-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -556,13 +609,6 @@
   
   <url>
     <loc>https://jpcly.cn/tags/JSP/</loc>
-    <lastmod>2022-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/Maven/</loc>
     <lastmod>2022-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -639,34 +685,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/Go/</loc>
-    <lastmod>2022-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
-    <lastmod>2022-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/gin/</loc>
-    <lastmod>2022-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/gorm/</loc>
-    <lastmod>2022-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.cn/tags/operating-system/</loc>
     <lastmod>2022-12-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -718,6 +736,13 @@
   </url>
   
   <url>
+    <loc>https://jpcly.cn/categories/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
+    <lastmod>2022-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.cn/categories/JavaWeb/</loc>
     <lastmod>2022-12-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -733,13 +758,6 @@
   
   <url>
     <loc>https://jpcly.cn/categories/SpringBoot/</loc>
-    <lastmod>2022-12-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/categories/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
     <lastmod>2022-12-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
