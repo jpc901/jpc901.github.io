@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>1-Golang底层原理(切片、字符串)</title>
+      <link href="/archives/8220dce0.html"/>
+      <url>/archives/8220dce0.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="学习前的介绍"><a href="#学习前的介绍" class="headerlink" title="学习前的介绍"></a>学习前的介绍</h1><p>通过幼<a href="https://www.bilibili.com/video/BV1hv411x7we/?spm_id_from=333.999.0.0&amp;vd_source=44bd80a738e14b1c370a0a540eb6975f">麟实验室</a>的学习让我更加深刻的去理解Golang的底层原理，看完最深刻的感受就是脑子好痒，非常干，全是干货。自己做的笔记整理出来，方便复习和阅读。</p><h1 id="string"><a href="#string" class="headerlink" title="string"></a>string</h1><h2 id="Unicode字符编码"><a href="#Unicode字符编码" class="headerlink" title="Unicode字符编码"></a>Unicode字符编码</h2><p>变长编码</p><div class="table-container"><table><thead><tr><th>编号</th><th>编码模板</th><th>最高位固定标识位</th></tr></thead><tbody><tr><td>[0, 127]</td><td>0???????</td><td>0</td></tr><tr><td>[128, 2047]</td><td>110????? 10??????</td><td>110 和 10</td></tr><tr><td>[2048,  65535]</td><td>1110???? 10?????? 10??????</td><td>1110 和 10 和 10</td></tr></tbody></table></div><p>例如</p><p><strong>界</strong> 编号：30028——-&gt;二进制（01110101 01001100）</p><p>将其填如对应的？位置——&gt;得到<strong>界</strong>UTF-8编码：1110<strong>0111</strong>  10<strong>010101</strong>  10<strong>001100</strong></p><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221217171220957.png" alt="image-20221217171220957"></p><h2 id="string的数据结构"><a href="#string的数据结构" class="headerlink" title="string的数据结构"></a>string的数据结构</h2><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221217171701076.png" alt="image-20221217171701076"></p><ul><li>golang不用特定标识符表示字符串的结尾。</li><li>golang采用string结构体来共同描述一个字符串。</li><li>data是指向字符串开始位置的指针。</li><li>len表示字符串的字节个数（非字符个数），因为golang采用utf8的变长编码方式，故不能采用字符个数。</li></ul><h2 id="string的底层细节"><a href="#string的底层细节" class="headerlink" title="string的底层细节"></a>string的底层细节</h2><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221217223823504.png" alt="image-20221217223823504"></p><ul><li>golang将string类型分配到只读内存段，因此不能通过下标的方式修改。</li><li>s2的起始地址是第3个字节，字节数目是8（起始地址到s1结尾字节数目）</li><li>多个string变量可以共用同一个字符串的某个部分。（如上图s2：如果s1修改eggo为egoo，那么s2也会受影响）</li><li>可以给变量整体附新值<code>s1=&quot;Hello&quot;</code>,那么s1就会指向新的地址。</li><li>可转为字节切片对字符串内容进行修改，不过改动的是拷贝后的字符串（上图bs切片）</li></ul><h1 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h1><h2 id="slice结构"><a href="#slice结构" class="headerlink" title="slice结构"></a>slice结构</h2><p>slice分三部分：【存哪里】【存了多少元素】【可以存多少元素】(data, len, cap)</p><ul><li><p><code>var a []int</code>：变量a —&gt; (data=nil, 0, 0)</p></li><li><p><code>var a = make([]int, 3, 5)</code> 变量—&gt;（data=起始地址, 3, 5）</p></li><li><p>new一个slice</p><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221217231319635.png" alt="image-20221217231319635"></p></li></ul><h2 id="slice扩容机制"><a href="#slice扩容机制" class="headerlink" title="slice扩容机制"></a>slice扩容机制</h2><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221217231911340.png" alt="image-20221217231911340"></p><ul><li>首先判断，如果新申请容量（cap）大于2倍的旧容量（old.cap），最终容量（newcap）就是新申请的容量（cap）</li><li>否则判断，如果旧切片的长度小于1024，则最终容量(newcap)就是旧容量(old.cap)的两倍，即（newcap=doublecap）</li><li>否则判断，如果旧切片长度大于等于1024，则最终容量（newcap）从旧容量（old.cap）开始循环增加原来的 1/4，即（newcap=old.cap,for {newcap += newcap/4}）直到最终容量（newcap）大于等于新申请的容量(cap)，即（newcap &gt;= cap）</li><li>如果最终容量（cap）计算值溢出，则最终容量（cap）就是新申请容量（cap）</li></ul><p><strong>扩容之后的数组一定是新的么</strong></p><ol><li>情况一：切片的cap还够用，则扩容后还是原来的底层数组。</li><li>情况二：切片的cap不够用，则扩容后会开辟新的数组，将原来的值拷贝后再扩容，此时的底层数组是新开辟的而不是原来的。</li></ol><p><strong>如上图中扩容后cap=5后发生什么（假如机器是64位）</strong></p><ol><li><strong>内存管理模块</strong>会提前向操作系统申请一批不同规格的内存地址如(8, 16, 32, 48, 64, 80, 96…)</li><li>预估申请的内存会匹配到合适规格的内存，5 * 8 = 40byte, 那么就会匹配到规格为48字节的内存。</li></ol><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>幼麟实验室bilibili：<a href="https://www.bilibili.com/video/BV1hv411x7we/?spm_id_from=333.999.0.0&amp;vd_source=44bd80a738e14b1c370a0a540eb6975f">https://space.bilibili.com/567195437/?spm_id_from=333.999.0.0</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Golang底层原理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang底层原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>7-错误恢复（实现一个GoWeb框架Gee）</title>
       <link href="/archives/3bab1fc2.html"/>
       <url>/archives/3bab1fc2.html</url>
@@ -967,9 +992,9 @@
       
         <tags>
             
-            <tag> JavaWeb </tag>
-            
             <tag> 数据库 </tag>
+            
+            <tag> JavaWeb </tag>
             
             <tag> MyBatis </tag>
             
@@ -1023,11 +1048,11 @@
       
         <tags>
             
-            <tag> JavaWeb </tag>
-            
             <tag> JDBC </tag>
             
             <tag> 数据库 </tag>
+            
+            <tag> JavaWeb </tag>
             
         </tags>
       
