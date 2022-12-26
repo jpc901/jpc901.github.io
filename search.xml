@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>4-Golang幼麟实验室笔记(方法)</title>
+      <link href="/archives/853c0961.html"/>
+      <url>/archives/853c0961.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>变量a称为<strong>方法接收者</strong>，会作为方法Name()的第一个参数传入。</p><p><strong>Go语言中函数类型只和参数与返回值相关。</strong></p><p><strong>方法本质上就是普通的函数</strong>，接收者是隐含的第一个参数。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">  name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a A)</span></span> Name() <span class="type">string</span> &#123;</span><br><span class="line">  a.name = <span class="string">&quot;Hi &quot;</span> + a.name</span><br><span class="line">  <span class="keyword">return</span> a.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  a := A&#123;name: <span class="string">&quot;itxiaoma&quot;</span>&#125;</span><br><span class="line">  fmt.Println(a.Name())  <span class="comment">//Hi itxiaoma</span></span><br><span class="line">  fmt.Println(A.Name(a)) <span class="comment">//Hi itxiaoma</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">  name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a A)</span></span> Name() <span class="type">string</span> &#123;</span><br><span class="line">  a.name = <span class="string">&quot;Hi &quot;</span> + a.name</span><br><span class="line">  <span class="keyword">return</span> a.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NameOfA</span><span class="params">(a A)</span></span> <span class="type">string</span> &#123;</span><br><span class="line">  a.name = <span class="string">&quot;Hi &quot;</span> + a.name</span><br><span class="line">  <span class="keyword">return</span> a.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  t1 := reflect.TypeOf(A.Name)    </span><br><span class="line">  t2 := reflect.TypeOf(NameOfA)    </span><br><span class="line">  fmt.Println(t1)    <span class="comment">//func(main.A) string</span></span><br><span class="line">  fmt.Println(t2)    <span class="comment">//func(main.A) string</span></span><br><span class="line">  fmt.Println(t1 == t2)    <span class="comment">//true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h2><h3 id="值接收者"><a href="#值接收者" class="headerlink" title="值接收者"></a>值接收者</h3><ul><li>main函数栈帧：局部变量a只包含一个string类型成员，字符串内容在数据段，地址addr1，字节数目4；</li><li>传参值拷贝：局部变量a拷贝到参数空间，指向新的内容addr2，字节数目改为8</li><li>局部变量a是值接收者，通过它调用方法时修改的是拷贝过去的参数，而不是局部变量a</li></ul><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221226212840188.png" alt="image-20221226212840188"></p><h3 id="指针接收者"><a href="#指针接收者" class="headerlink" title="指针接收者"></a>指针接收者</h3><ul><li>main函数栈帧：包含局部变量a，还有a的指针pa</li><li>pa.Name()会被转为<code>(*A).Name(pa)</code>这样的函数调用</li><li>传参值拷贝：参数为A的指针，传参值拷贝时拷贝的是变量a的地址；修改时变量a指向新的地址addr2，字节数目改为8；</li><li>拷贝返回值时，拷贝的是局部变量a的成员</li></ul><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221226214236989.png" alt="image-20221226214236989"></p><h3 id="转换语法糖"><a href="#转换语法糖" class="headerlink" title="转换语法糖"></a>转换语法糖</h3><p>语法糖是在编译期间发挥作用的，编译期间无法拿到地址的字面量就不能借助语法糖转换了，无法通过编译。</p><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221226214257204.png" alt="image-20221226214257204"></p><h2 id="方法赋给变量"><a href="#方法赋给变量" class="headerlink" title="方法赋给变量"></a>方法赋给变量</h2><p>Go语言中函数作为变量，参数和返回值时，都是以Function Value的形式存在的。</p><p>闭包只是有捕获列表的Function Value。</p><h3 id="方法表达式"><a href="#方法表达式" class="headerlink" title="方法表达式"></a>方法表达式</h3><ul><li>把一个类型的方法赋给一个变量，该变量称为方法表达式(f1)</li><li>f1本质上也是一个Function Value，也就是一个funcval结构体的指针，fn指向A.GetName的函数指令入口</li><li>通过f1执行方法时，需要传入A类型的变量a作为参数</li></ul><h3 id="方法变量"><a href="#方法变量" class="headerlink" title="方法变量"></a>方法变量</h3><ul><li>方法变量也是一个Function Value，而且会捕获方法接收者形成闭包</li><li>这里f2仅作为局部变量，与a的声明周期是一致的，编译器会优化为<code>A.GetName(a)</code>进行调用</li></ul><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221226214333782.png" alt="image-20221226214333782"></p><p>方法变量作为返回值：</p><p>f3就是一个闭包对象，捕获了GetFunc函数的局部变量a</p><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221226214359371.png" alt="image-20221226214359371"></p><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>幼麟实验室bilibili：<a href="https://www.bilibili.com/video/BV1hv411x7we/?spm_id_from=333.999.0.0&amp;vd_source=44bd80a738e14b1c370a0a540eb6975f">https://space.bilibili.com/567195437/?spm_id_from=333.999.0.0</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Golang底层原理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang底层原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>3-Golang幼麟实验室笔记(闭包)</title>
       <link href="/archives/6e3aeda2.html"/>
       <url>/archives/6e3aeda2.html</url>
@@ -1071,9 +1096,9 @@
       
         <tags>
             
-            <tag> JavaWeb </tag>
-            
             <tag> Maven </tag>
+            
+            <tag> JavaWeb </tag>
             
         </tags>
       
