@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jpcly.cn/archives/2ea663e2.html</loc>
+    
+    <lastmod>2023-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.cn/archives/d05a0b6f.html</loc>
     
     <lastmod>2023-02-28</lastmod>
@@ -628,6 +637,13 @@
   </url>
   
   <url>
+    <loc>https://jpcly.cn/tags/GoWeb/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.cn/tags/Cache/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -635,7 +651,7 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/GoWeb/</loc>
+    <loc>https://jpcly.cn/tags/sqlx/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -650,13 +666,6 @@
   
   <url>
     <loc>https://jpcly.cn/tags/redis/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/sqlx/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -810,14 +819,14 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/JavaScript/</loc>
+    <loc>https://jpcly.cn/tags/Computer-Networking/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/Computer-Networking/</loc>
+    <loc>https://jpcly.cn/tags/JavaScript/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -896,14 +905,14 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://jpcly.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpcly.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <loc>https://jpcly.cn/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
