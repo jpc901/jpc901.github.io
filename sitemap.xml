@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jpcly.cn/archives/44ed92c8.html</loc>
+    
+    <lastmod>2023-02-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jpcly.cn/archives/fcbe13c3.html</loc>
     
     <lastmod>2023-02-28</lastmod>
@@ -39,15 +48,6 @@
   
   <url>
     <loc>https://jpcly.cn/archives/2ea663e2.html</loc>
-    
-    <lastmod>2023-02-28</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/archives/44ed92c8.html</loc>
     
     <lastmod>2023-02-28</lastmod>
     
@@ -671,13 +671,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/GoWeb/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.cn/tags/gin/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -692,27 +685,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/MySQL/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/sqlx/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/redis/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.cn/tags/Go/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -721,6 +693,13 @@
   
   <url>
     <loc>https://jpcly.cn/tags/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%84%9F%E6%83%B3/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/HTTP/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -748,13 +727,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/HTTP/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.cn/tags/JSP/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -762,14 +734,14 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/Maven/</loc>
+    <loc>https://jpcly.cn/tags/MyBatis/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/MyBatis/</loc>
+    <loc>https://jpcly.cn/tags/Maven/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -811,20 +783,6 @@
   </url>
   
   <url>
-    <loc>https://jpcly.cn/tags/Tomcat/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpcly.cn/tags/Web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
-    <lastmod>2023-02-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://jpcly.cn/tags/Cookie/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -833,6 +791,20 @@
   
   <url>
     <loc>https://jpcly.cn/tags/Session/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/Tomcat/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/Web%E6%9C%8D%E5%8A%A1%E5%99%A8/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -854,6 +826,13 @@
   
   <url>
     <loc>https://jpcly.cn/tags/JavaScript/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/GoWeb/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -882,6 +861,27 @@
   
   <url>
     <loc>https://jpcly.cn/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/MySQL/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/sqlx/</loc>
+    <lastmod>2023-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpcly.cn/tags/redis/</loc>
     <lastmod>2023-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
