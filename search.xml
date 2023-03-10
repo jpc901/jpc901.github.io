@@ -675,33 +675,6 @@
     
     
     <entry>
-      <title>15-反射(go基础)</title>
-      <link href="/archives/c2923c6b.html"/>
-      <url>/archives/c2923c6b.html</url>
-      
-        <content type="html"><![CDATA[<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h2 id="reflect-包"><a href="#reflect-包" class="headerlink" title="reflect 包"></a>reflect 包</h2><p>Go 语言提供了一种机制，能够在运行时更新变量和检查它们的值、调用它们的方法，而不需要在编译时就知道这些变量的具体类型。这种机制被称为 <strong>反射</strong> 。</p><p>反射是把双刃剑，功能强大但代码可读性并不理想，若非必要并不推荐使用反射。</p><p>在 Go 中 <code>reflect</code> 包实现了运行时反射。<code>reflect</code> 包会帮助识别 <code>interface&#123;&#125;</code> 变量的底层具体类型和具体值。</p><h2 id="反射的三大定律"><a href="#反射的三大定律" class="headerlink" title="反射的三大定律"></a>反射的三大定律</h2><p>之前在 <code>静态类型与动态类型</code>章节中讲过，一个接口变量，实际上都是由一 <code>pair</code> 对（type 和 data）组合而成，pair 对中记录着实际变量的值和类型。也就是说在真实世界（反射前环境）里，type 和 value 是合并在一起组成接口变量的。</p><p>而在反射的世界（反射后的环境）里，type 和 data 却是分开的，他们分别由 <code>reflect.Type</code> 和 <code>reflect.Value</code> 来表现。</p><p>Go 语言里有反射三定律，是你在学习反射时，很重要的参考：</p><ol><li>Reflection goes from interface value to reflection object.</li><li>Reflection goes from reflection object to interface value.</li><li>To modify a reflection object, the value must be settable.</li></ol><p>接下来我们就来讲一讲反射三大定律。</p><h3 id="反射第一定律"><a href="#反射第一定律" class="headerlink" title="反射第一定律"></a>反射第一定律</h3><blockquote><p>Reflection goes from interface value to reflection object.</p></blockquote><p>反射第一定律：反射可以将“接口类型变量”转换为“反射类型对象”。</p><p>这里反射类型指 <code>reflect.Type</code> 和 <code>reflect.Value</code> 。</p><p>通过之前我们讲过的 <code>reflect.TypeOf()</code> 方法和 <code>reflect.ValueOf()</code> 方法可以分别获得接口值的类型和接口值的值。这两个方法返回的对象，我们称之为反射对象。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a <span class="keyword">interface</span>&#123;&#125; = <span class="number">3.14</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;接口变量的类型为 %T ，值为 %v\n&quot;</span>, a, a)</span><br><span class="line">    t := reflect.TypeOf(a)</span><br><span class="line">    v := reflect.ValueOf(a)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;从接口变量到反射对象：Type对象类型为 %T\n&quot;</span>, t)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;从接口变量到反射对象：Value对象类型为 %T\n&quot;</span>, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>​    使用 <code>reflect.TypeOf()</code> 和 <code>reflect.ValueOf()</code> 方法完成了从接口类型变量到反射对象的转换。在这里说接口类型是因为 <code>TypeOf</code> 和 <code>ValueOf</code> 两个函数接收的是 <code>interface&#123;&#125;</code> 空接口类型， Go 语言函数都是值传递，会将类型隐式转换成接口类型。</p><h3 id="反射第二定律"><a href="#反射第二定律" class="headerlink" title="反射第二定律"></a>反射第二定律</h3><p>反射第二定律：反射可以将“反射类型对象”转换为“接口类型变量”</p><p>第二定律刚好和第一定律相反，第一定律讲的是从接口变量到反射对象的转换，而第二定律讲的是从反射对象到接口变量的转换。</p><p>一个 <code>reflect.Value</code> 类型的变量，我们可以使用 <code>Interface</code> 方法恢复其接口类型的值。事实上，这个方法会把 <code>type</code> 和 <code>value</code> 信息打包并填充到一个接口变量中，然后返回。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;reflect&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> a <span class="keyword">interface</span>&#123;&#125; = <span class="number">3.14</span></span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">&quot;接口变量的类型为 %T ，值为 %v\n&quot;</span>, a, a)</span><br><span class="line"></span><br><span class="line">    t := reflect.TypeOf(a)</span><br><span class="line">    v := reflect.ValueOf(a)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反射第一定律</span></span><br><span class="line">    fmt.Printf(<span class="string">&quot;从接口变量到反射对象：Type对象类型为 %T\n&quot;</span>, t)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;从接口变量到反射对象：Value对象类型为 %T\n&quot;</span>, v)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 反射第二定律</span></span><br><span class="line">    i := v.Interface()</span><br><span class="line">    fmt.Printf(<span class="string">&quot;从反射对象到接口变量：对象类型为 %T，值为 %v\n&quot;</span>, i, i)</span><br><span class="line">    <span class="comment">// 使用类型断言进行转换</span></span><br><span class="line">    x := v.Interface().(<span class="type">float64</span>)</span><br><span class="line">    fmt.Printf(<span class="string">&quot;x 类型为 %T，值为 %v\n&quot;</span>, x, x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="反射第三定律"><a href="#反射第三定律" class="headerlink" title="反射第三定律"></a>反射第三定律</h3><blockquote><p>To modify a reflection object, the value must be settable.</p></blockquote><p>反射第三定律：如果要修改“反射类型对象”其值必须是“可写的”</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Golang </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Golang </tag>
-            
-            <tag> Go </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>14-静态类型与动态类型(go基础)</title>
       <link href="/archives/4ebf629.html"/>
       <url>/archives/4ebf629.html</url>
@@ -1339,9 +1312,9 @@
       
         <tags>
             
-            <tag> 数据库 </tag>
-            
             <tag> JavaWeb </tag>
+            
+            <tag> 数据库 </tag>
             
             <tag> MyBatis </tag>
             
@@ -1368,9 +1341,9 @@
       
         <tags>
             
-            <tag> JavaWeb </tag>
-            
             <tag> Maven </tag>
+            
+            <tag> JavaWeb </tag>
             
         </tags>
       
@@ -1395,11 +1368,11 @@
       
         <tags>
             
+            <tag> JavaWeb </tag>
+            
             <tag> JDBC </tag>
             
             <tag> 数据库 </tag>
-            
-            <tag> JavaWeb </tag>
             
         </tags>
       
