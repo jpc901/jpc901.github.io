@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>分布式存储系统使用kubernets部署</title>
+      <title>分布式存储系统使用kubernetes部署</title>
       <link href="/archives/282c52dc.html"/>
       <url>/archives/282c52dc.html</url>
       
@@ -1395,11 +1395,11 @@
       
         <tags>
             
-            <tag> MyBatis </tag>
+            <tag> 数据库 </tag>
             
             <tag> JavaWeb </tag>
             
-            <tag> 数据库 </tag>
+            <tag> MyBatis </tag>
             
         </tags>
       
@@ -1451,11 +1451,11 @@
       
         <tags>
             
-            <tag> JavaWeb </tag>
+            <tag> JDBC </tag>
             
             <tag> 数据库 </tag>
             
-            <tag> JDBC </tag>
+            <tag> JavaWeb </tag>
             
         </tags>
       
