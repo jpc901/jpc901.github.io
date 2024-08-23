@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>4-分组控制（实现一个GoWeb框架Gee） | 贾小白博客</title><meta name="author" content="jpc901"><meta name="copyright" content="jpc901"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="路由分组控制目标 实现路由分组控制  分组控制的意义分组控制(Group Control)是 Web 框架应提供的基础功能之一。所谓分组，是指路由的分组。如果没有路由分组，我们需要针对每一个路由进行控制。 真实的业务场景中，往往某一组路由需要相似的处理。例如：  以&amp;#x2F;post开头的路由匿名可访问。"><link rel="shortcut icon" href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/031-perseus.png"><link rel="canonical" href="https://jpcly.cn/archives/de03f0bd.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-jjsoouLcGZ"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '4-分组控制（实现一个GoWeb框架Gee）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-23 23:02:53'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220119090729.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="贾小白博客"><span class="site-name">贾小白博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">4-分组控制（实现一个GoWeb框架Gee）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-10T07:56:21.000Z" title="发表于 2022-12-10 15:56:21">2022-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-23T15:02:53.628Z" title="更新于 2024-08-23 23:02:53">2024-08-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Golang/">Golang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="4-分组控制（实现一个GoWeb框架Gee）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="路由分组控制"><a href="#路由分组控制" class="headerlink" title="路由分组控制"></a>路由分组控制</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>实现路由分组控制</li>
+</ul>
+<h2 id="分组控制的意义"><a href="#分组控制的意义" class="headerlink" title="分组控制的意义"></a>分组控制的意义</h2><p>分组控制(Group Control)是 Web 框架应提供的基础功能之一。所谓分组，是指路由的分组。如果没有路由分组，我们需要针对每一个路由进行控制。</p>
+<p>真实的业务场景中，往往某一组路由需要相似的处理。例如：</p>
+<ul>
+<li>以<code>/post</code>开头的路由匿名可访问。</li>
+<li>以<code>/admin</code>开头的路由需要鉴权。</li>
+<li>以<code>/api</code>开头的路由是 RESTful 接口，可以对接第三方平台，需要三方平台鉴权。</li>
+</ul>
+<p>大部分情况下的路由分组，是以相同的前缀来区分的。因此，我们今天实现的分组控制也是以前缀来区分，并且支持分组的嵌套。例如<code>/post</code>是一个分组，<code>/post/a</code>和<code>/post/b</code>可以是该分组下的子分组。作用在<code>/post</code>分组上的中间件(middleware)，也都会作用在子分组，子分组还可以应用自己特有的中间件。</p>
+<p>中间件可以给框架提供无限的扩展能力，应用在分组上，可以使得分组控制的收益更为明显，而不是共享相同的路由前缀这么简单。例如<code>/admin</code>的分组，可以应用鉴权中间件；<code>/</code>分组应用日志中间件，<code>/</code>是默认的最顶层的分组，也就意味着给所有的路由，即整个框架增加了记录日志的能力。</p>
+<h2 id="分组嵌套"><a href="#分组嵌套" class="headerlink" title="分组嵌套"></a>分组嵌套</h2><ol>
+<li>找到当前分组的父亲（parent）。</li>
+<li>存储应用在该分组的中间件。</li>
+</ol>
+<h2 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h2><h3 id="Group的定义"><a href="#Group的定义" class="headerlink" title="Group的定义"></a>Group的定义</h3><p>在Group中，保存一个指针，指向<code>Engine</code>，整个框架的所有资源都是由<code>Engine</code>统一协调的，那么就可以通过<code>Engine</code>间接地访问各种接口了。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RouterGroup <span class="keyword">struct</span> &#123;</span><br><span class="line">	prefix      <span class="type">string</span></span><br><span class="line">	middlewares []HandlerFunc <span class="comment">// 中支持间件</span></span><br><span class="line">	parent      *RouterGroup  <span class="comment">// 支持嵌套</span></span><br><span class="line">	engine      *Engine       <span class="comment">// 所有组共享一个Engine实例</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Engine <span class="keyword">struct</span> &#123;</span><br><span class="line">	*RouterGroup</span><br><span class="line">	router *router</span><br><span class="line">	groups []*RouterGroup <span class="comment">// 存储所有的组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现RouterGroup"><a href="#实现RouterGroup" class="headerlink" title="实现RouterGroup"></a>实现RouterGroup</h3><p><code>Engine</code>作为最顶层的分组，也就是说<code>Engine</code>拥有<code>RouterGroup</code>所有的能力。</p>
+<p><code>Engine</code>从某种意义上继承了<code>RouterGroup</code>的所有属性和方法，因为 (*Engine).engine 是指向自己的。这样实现，我们既可以像原来一样添加路由，也可以通过分组添加路由。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// New 构造函数 gee.Engine</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">()</span></span> *Engine &#123;</span><br><span class="line">   engine := &amp;Engine&#123;router: newRouter()&#125;</span><br><span class="line">   engine.RouterGroup = &amp;RouterGroup&#123;engine: engine&#125;</span><br><span class="line">   engine.groups = []*RouterGroup&#123;engine.RouterGroup&#125;</span><br><span class="line">   <span class="keyword">return</span> engine</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Group 定义一个新的 RouterGroup</span></span><br><span class="line"><span class="comment">// 存储所有组共享相同的Engine实例</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(group *RouterGroup)</span></span> Group(prefix <span class="type">string</span>) *RouterGroup &#123;</span><br><span class="line">   engine := group.engine</span><br><span class="line">   newGroup := &amp;RouterGroup&#123;</span><br><span class="line">      prefix: group.prefix + prefix,</span><br><span class="line">      parent: group,</span><br><span class="line">      engine: engine,</span><br><span class="line">   &#125;</span><br><span class="line">   engine.groups = <span class="built_in">append</span>(engine.groups, newGroup) <span class="comment">// 添加一个分组</span></span><br><span class="line">   <span class="keyword">return</span> newGroup</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(group *RouterGroup)</span></span> addRoute(method <span class="type">string</span>, comp <span class="type">string</span>, handler HandlerFunc) &#123;</span><br><span class="line">   pattern := group.prefix + comp</span><br><span class="line">   log.Printf(<span class="string">&quot;Route %4s - %s&quot;</span>, method, pattern)</span><br><span class="line">   <span class="comment">// 通过group去调用engine实例再去添加路由</span></span><br><span class="line">   group.engine.router.addRoute(method, pattern, handler)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// GET GET请求</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(group *RouterGroup)</span></span> GET(pattern <span class="type">string</span>, handler HandlerFunc) &#123;</span><br><span class="line">   group.addRoute(<span class="string">&quot;GET&quot;</span>, pattern, handler)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// POST POST请求</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(group *RouterGroup)</span></span> POST(pattern <span class="type">string</span>, handler HandlerFunc) &#123;</span><br><span class="line">   group.addRoute(<span class="string">&quot;POST&quot;</span>, pattern, handler)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   r := gee.New()</span><br><span class="line">   r.GET(<span class="string">&quot;/index&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gee.Context)</span></span> &#123;</span><br><span class="line">      c.HTML(http.StatusOK, <span class="string">&quot;&lt;h1&gt;Index Page&lt;/h1&gt;&quot;</span>)</span><br><span class="line">   &#125;)</span><br><span class="line">   v1 := r.Group(<span class="string">&quot;/v1&quot;</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      v1.GET(<span class="string">&quot;/&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gee.Context)</span></span> &#123;</span><br><span class="line">         c.HTML(http.StatusOK, <span class="string">&quot;&lt;h1&gt;Hello Gee&lt;/h1&gt;&quot;</span>)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      v1.GET(<span class="string">&quot;/hello&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gee.Context)</span></span> &#123;</span><br><span class="line">         c.String(http.StatusOK, <span class="string">&quot;hello %s, you&#x27;re at %s\n&quot;</span>, c.Query(<span class="string">&quot;name&quot;</span>), c.Path)</span><br><span class="line">      &#125;)</span><br><span class="line">   &#125;</span><br><span class="line">   v2 := r.Group(<span class="string">&quot;/v2&quot;</span>)</span><br><span class="line">   &#123;</span><br><span class="line">      v2.GET(<span class="string">&quot;/hello/:name&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gee.Context)</span></span> &#123;</span><br><span class="line">         c.String(http.StatusOK, <span class="string">&quot;hello %s, you&#x27;re at %s\n&quot;</span>, c.Param(<span class="string">&quot;name&quot;</span>), c.Path)</span><br><span class="line">      &#125;)</span><br><span class="line">      v2.POST(<span class="string">&quot;/login&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gee.Context)</span></span> &#123;</span><br><span class="line">         c.JSON(http.StatusOK, gee.H&#123;</span><br><span class="line">            <span class="string">&quot;username&quot;</span>: c.PostForm(<span class="string">&quot;username&quot;</span>),</span><br><span class="line">            <span class="string">&quot;password&quot;</span>: c.PostForm(<span class="string">&quot;password&quot;</span>),</span><br><span class="line">         &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   r.Run(<span class="string">&quot;:9999&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jpcly.cn">jpc901</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jpcly.cn/archives/de03f0bd.html">https://jpcly.cn/archives/de03f0bd.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jpcly.cn" target="_blank">贾小白博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Golang/">Golang</a><a class="post-meta__tags" href="/tags/GoWeb/">GoWeb</a></div><div class="post_share"><div class="social-share" data-image="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215434.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215434.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215417.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215417.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/c43c0113.html" title="5-中间件（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">5-中间件（实现一个GoWeb框架Gee）</div></div></a></div><div class="next-post pull-right"><a href="/archives/9475d074.html" title="3-Trie树实现动态路由（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">3-Trie树实现动态路由（实现一个GoWeb框架Gee）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/9475d074.html" title="3-Trie树实现动态路由（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">3-Trie树实现动态路由（实现一个GoWeb框架Gee）</div></div></a></div><div><a href="/archives/e54117d5.html" title="2-上下文Context（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-02</div><div class="title">2-上下文Context（实现一个GoWeb框架Gee）</div></div></a></div><div><a href="/archives/c43c0113.html" title="5-中间件（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-12</div><div class="title">5-中间件（实现一个GoWeb框架Gee）</div></div></a></div><div><a href="/archives/3bab1fc2.html" title="7-错误恢复（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">7-错误恢复（实现一个GoWeb框架Gee）</div></div></a></div><div><a href="/archives/5c07cf63.html" title="1-HTTP基础（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-02</div><div class="title">1-HTTP基础（实现一个GoWeb框架Gee）</div></div></a></div><div><a href="/archives/30e5e055.html" title="6-模板（实现一个GoWeb框架Gee）"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s4..jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-13</div><div class="title">6-模板（实现一个GoWeb框架Gee）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%88%86%E7%BB%84%E6%8E%A7%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">路由分组控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E6%8E%A7%E5%88%B6%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number">1.2.</span> <span class="toc-text">分组控制的意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%B5%8C%E5%A5%97"><span class="toc-number">1.3.</span> <span class="toc-text">分组嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Group"><span class="toc-number">1.4.</span> <span class="toc-text">Group</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Group%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">Group的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0RouterGroup"><span class="toc-number">1.4.2.</span> <span class="toc-text">实现RouterGroup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">调用</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By jpc901</div><div class="footer_custom_text"><div><a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/">鄂ICP备2022006987号-1</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

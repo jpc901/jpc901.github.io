@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Request和Response | 贾小白博客</title><meta name="author" content="jpc901"><meta name="copyright" content="jpc901"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Request(请求)和Response(响应) Request：获取请求数据 Response：设置响应数据   RequestRequest继承体系  Tomcat需要解析请求数据，封装为request对象，并且创建request对象传递到service方法中 使用request对象，查阅Jav"><link rel="shortcut icon" href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/031-perseus.png"><link rel="canonical" href="https://jpcly.cn/archives/ac012cb0.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-jjsoouLcGZ"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Request和Response',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-23 23:02:53'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220119090729.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="贾小白博客"><span class="site-name">贾小白博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Request和Response</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-20T04:12:32.000Z" title="发表于 2022-11-20 12:12:32">2022-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-23T15:02:53.631Z" title="更新于 2024-08-23 23:02:53">2024-08-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaWeb/">JavaWeb</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Request和Response"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Request-请求-和Response-响应"><a href="#Request-请求-和Response-响应" class="headerlink" title="Request(请求)和Response(响应)"></a>Request(请求)和Response(响应)</h1><ul>
+<li>Request：获取请求数据</li>
+<li>Response：设置响应数据 </li>
+</ul>
+<h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><h3 id="Request继承体系"><a href="#Request继承体系" class="headerlink" title="Request继承体系"></a>Request继承体系</h3><p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221107160322199.png" alt="image-20221107160322199"></p>
+<ol>
+<li>Tomcat需要解析请求数据，封装为request对象，并且创建request对象传递到service方法中</li>
+<li>使用request对象，查阅JavaEE API文档的HttpServletRequest接口</li>
+</ol>
+<h3 id="Request获取请求数据"><a href="#Request获取请求数据" class="headerlink" title="Request获取请求数据"></a>Request获取请求数据</h3><ol>
+<li>请求行:  GET /request-demo/req1?username=zhangsan HTTP/1.1<ul>
+<li>String getMethod()：获取请求方式:GET</li>
+<li>String getContextPath()：获取虚拟目录(项目访问路径):/request-demo</li>
+<li>StringBuffer getRequestURLO：获取URL(统一资源定位符): <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/request-demo/req1">http://localhost:8080/request-demo/req1</a></li>
+<li>String getRequestURI()：获取URI(统一资源标识符)：/request-demo/req1</li>
+<li>String getQueryString()：获取请求参数(GET方式)：username=zhangsan&amp;password=123</li>
+</ul>
+</li>
+<li>请求头：User-Agent: Mozilla/5.0 Chrome/91.0.4472.106<ul>
+<li>String getHeader(String name):根据请求头名称，获取值</li>
+</ul>
+</li>
+<li>请求体：username=superbaby&amp;password=123<ul>
+<li>ServletInputStream getlnputStream()：获取字节输入流</li>
+<li>BufferedReader getReader()：获取字符输入流</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 请求行部分</span></span><br><span class="line">        <span class="comment">// 获取请求方式：GET</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">method</span> <span class="operator">=</span> req.getMethod();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取虚拟目录</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">contextPath</span> <span class="operator">=</span> req.getContextPath();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取URL</span></span><br><span class="line">        <span class="type">StringBuffer</span> <span class="variable">url</span> <span class="operator">=</span> req.getRequestURL();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取URI</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">uri</span> <span class="operator">=</span> req.getRequestURI();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取请求参数</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">queryString</span> <span class="operator">=</span> req.getQueryString();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//--------请求头部分</span></span><br><span class="line">        <span class="comment">// 获取请求头：user-agent:浏览器版本信息</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">header</span> <span class="operator">=</span> req.getHeader(<span class="string">&quot;user-agent&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(method);</span><br><span class="line">        System.out.println(contextPath);</span><br><span class="line">        System.out.println(url);</span><br><span class="line">        System.out.println(uri);</span><br><span class="line">        System.out.println(queryString);</span><br><span class="line">        System.out.println(header);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">// 获取请求体：</span></span><br><span class="line">        <span class="comment">// 获取字符输入流：</span></span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> req.getReader();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 读取数据</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> br.readLine();</span><br><span class="line">        System.out.println(line); </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221107162825291.png" alt="image-20221107162825291"></p>
+<h3 id="Request通用方式获取请求参数"><a href="#Request通用方式获取请求参数" class="headerlink" title="Request通用方式获取请求参数"></a>Request通用方式获取请求参数</h3><ul>
+<li>Map<String, String[]>getParameterMap()：获取所有参数Map集合</li>
+<li>String[]  getParameterValues(String name)∶根据名称获取参数值（数组)</li>
+<li>String getParameter(String name)：根据名称获取参数值（单个值)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取Map集合</span></span><br><span class="line">        Map&lt;String, String[]&gt; map = req.getParameterMap();</span><br><span class="line">        <span class="keyword">for</span>(String key : map.keySet()) &#123;</span><br><span class="line">            System.out.print(key+<span class="string">&quot;: &quot;</span>);</span><br><span class="line">            String[] values = map.get(key);</span><br><span class="line">            <span class="keyword">for</span>(String val : values)&#123;</span><br><span class="line">                System.out.print(val + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;===============&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更具key获取参数</span></span><br><span class="line">        String[] hobbies = req.getParameterValues(<span class="string">&quot;hobby&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span>(String hobby : hobbies) &#123;</span><br><span class="line">            System.out.print(hobby + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;===============&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取单个值</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> req.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> req.getParameter(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        System.out.println(username);</span><br><span class="line">        System.out.println(password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="built_in">this</span>.doGet(req, resp);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解决中文乱码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// post解决：设置字符输入流编码</span></span><br><span class="line">req.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// get方式因为浏览器编码方式是UTF-8而tomcat解码方式是ISO-8859-1，导致乱码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.url编码</span></span><br><span class="line"><span class="type">String</span> <span class="variable">encode</span> <span class="operator">=</span> URLEncoder.encode(username, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.url解码</span></span><br><span class="line"><span class="type">String</span> <span class="variable">decode</span> <span class="operator">=</span> URLDecoder.decode(encode, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.转化为字节数据</span></span><br><span class="line"><span class="type">byte</span>[] bytes = decode.get(<span class="string">&quot;ISO-8859-1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4.将字节数据转化成字符串</span></span><br><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(bytes, <span class="string">&quot;utf-8&quot;</span>); </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// get解决：</span></span><br><span class="line"><span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> req.getParameter(<span class="string">&quot;username&quot;</span>);</span><br><span class="line">username = <span class="keyword">new</span> <span class="title class_">String</span>(username.get(StandarCharsets.ISO_8859_1), StanderCharsets.UTF_8);</span><br></pre></td></tr></table></figure>
+<p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221107172108277.png" alt="image-20221107172108277"></p>
+<h3 id="Request请求转发"><a href="#Request请求转发" class="headerlink" title="Request请求转发"></a>Request请求转发</h3><ul>
+<li>请求转发(forward)：一种在服务器内部的资源跳转方式。</li>
+<li>实现方式：req.getRequestDispatcher(“资源B路径”).forward(req,resp);</li>
+<li>请求转发资源间共享数据：使用Request对象<ul>
+<li>void setAttribute(String name, Object o)：存储数据到request域中</li>
+<li>Object getAttribute(String name)：根据key，获取值</li>
+<li>void removeAttribute(String name)：根据key，删除该键值对</li>
+</ul>
+</li>
+<li>请求转发特点:<ul>
+<li>浏览器地址栏路径不发生变化</li>
+<li>只能转发到当前服务器的内部资源</li>
+<li>一次请求，可以在转发的资源间使用request共享数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h2><h3 id="Response设置响应数据功能介绍"><a href="#Response设置响应数据功能介绍" class="headerlink" title="Response设置响应数据功能介绍"></a>Response设置响应数据功能介绍</h3><p>响应数据分为3部分:</p>
+<ol>
+<li><p>响应行:HTTP/1.1 200 OK<br>void setStatus(int sc)∶设置响应状态码</p>
+</li>
+<li><p>响应头: Content-Type: text/html<br>void setHeader(String name, String value)∶设置响应头键值对</p>
+</li>
+<li><p>响应体:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>PrintWriter getWriter():获取字符输出流<br>ServletOutputStream getOutputStream():获取字节输出流</p>
+</li>
+</ol>
+<h3 id="Response重定向"><a href="#Response重定向" class="headerlink" title="Response重定向"></a>Response重定向</h3><p><strong>重定向是一种资源跳转的方式，与转发有很大的区别</strong></p>
+<p><strong>重定向流程</strong>：浏览器请求资源A，资源A响应（我处理不了，找别人处理《状态码：302 》，那个人的位置是xx）然后浏览器自动请求资源B</p>
+<p><strong>转发</strong>：浏览器请求资源A，资源处理数据资源将数据转发给资源B</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 重定向</span></span><br><span class="line"><span class="comment">//        // 设置响应状态码302</span></span><br><span class="line"><span class="comment">//        response.setStatus(302);</span></span><br><span class="line"><span class="comment">//        // 设置响应头</span></span><br><span class="line"><span class="comment">//        response.setHeader(&quot;Location&quot;, &quot;/servlet_demo1_war/resp2&quot;);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 简化方式完成重定向</span></span><br><span class="line">        response.sendRedirect(<span class="string">&quot;/servlet_demo1_war/resp2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>重定向特点:</p>
+<ul>
+<li>浏览器地址栏路径发生变化</li>
+<li>可以重定向到任意位置的资源（服务器内部、外部均可)</li>
+<li>两次请求，不能在多个资源使用request共享数据</li>
+</ul>
+<h3 id="重定向与转发比较"><a href="#重定向与转发比较" class="headerlink" title="重定向与转发比较"></a>重定向与转发比较</h3><ul>
+<li><strong>请求转发</strong>：客户浏览器发送http请求,web服务器接受此请求,调用内部的一个方法在容器内部完成请求处理和转发动作,将目标资源发送给客户;在这里，转发的路径必须是同一个web容器下的url，其不能转向到其他的web路径上去，中间传递的是自己的容器内的request。在客户浏览器路径栏显示的仍然是其第一次访问的路径，也就是说客户是感觉不到服务器做了转发的。转发行为是浏览器只做了一次访问请求。</li>
+<li><strong>重定向过程</strong>：客户浏览器发送http请求,web服务器接受后发送302状态码响应及对应新的location给客户浏览器,客户浏览器发现是302响应，则自动再发送一个新的http请求，请求url是新的location地址,服务器根据此请求寻找资源并发送给客户。在这里location可以重定向到任意URL，既然是浏览器重新发出了请求，则就没有什么request传递的概念了。在客户浏览器路径栏显示的是其重定向的路径，客户可以观察到地址的变化的。重定向行为是浏览器做了至少两次的访问请求的。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>区别</th>
+<th>重定向</th>
+<th>请求转发</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在哪里完成</td>
+<td>客户端完成(可以在不同的服务器下完成)</td>
+<td>服务器端完成(必须是在同一台服务器下完成)</td>
+</tr>
+<tr>
+<td>浏览器发送请求的次数</td>
+<td>2次或者2次以上</td>
+<td>1次</td>
+</tr>
+<tr>
+<td>地址栏URL是否发生改变</td>
+<td>地址栏发生变化</td>
+<td>地址栏的地址不变</td>
+</tr>
+<tr>
+<td>是否共享request</td>
+<td>不共享数据(经过重定向后，request内的对象将无法使用)</td>
+<td>共享数据(以前的request中存放的变量不会失效，就像把两个页面拼到了一起)</td>
+</tr>
+<tr>
+<td>第二次请求发起者</td>
+<td>浏览器</td>
+<td>服务器</td>
+</tr>
+<tr>
+<td>第二次的请求路径方式</td>
+<td>绝对路径</td>
+<td>相对路径</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>因为还要浏览器发送第二次请求，重定向相对慢一点</td>
+<td>快</td>
+</tr>
+<tr>
+<td>语句</td>
+<td>response.sendRedirect(“success.jsp”);</td>
+<td>request.getRequestDispatcher(“success.jsp”).forward(request,response);</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/image-20221107194350119.png" alt="image-20221107194350119"></p>
+<h3 id="Response响应字符"><a href="#Response响应字符" class="headerlink" title="Response响应字符"></a>Response响应字符</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">       <span class="comment">// 1.获取字符串输出流</span></span><br><span class="line">       <span class="type">PrintWriter</span> <span class="variable">writer</span> <span class="operator">=</span> response.getWriter();</span><br><span class="line"></span><br><span class="line">       <span class="comment">// content-type,设置头</span></span><br><span class="line">       <span class="comment">// response.setHeader(&quot;content-type&quot;, &quot;text/html&quot;);</span></span><br><span class="line"></span><br><span class="line">       writer.write(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">       writer.write(<span class="string">&quot;&lt;h1&gt;aaa&lt;/h1&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="Response响应字节"><a href="#Response响应字节" class="headerlink" title="Response响应字节"></a>Response响应字节</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 1.读取文件</span></span><br><span class="line">        <span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;C://Users//jpc//Desktop//OldDesktop//5.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.获取response字节输出流</span></span><br><span class="line">        <span class="type">ServletOutputStream</span> <span class="variable">os</span> <span class="operator">=</span> response.getOutputStream();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.完成流的copy</span></span><br><span class="line"><span class="comment">//        byte[] buff = new byte[1024];</span></span><br><span class="line"><span class="comment">//        int len = 0;</span></span><br><span class="line"><span class="comment">//        while((len = fis.read(buff)) != -1) &#123;</span></span><br><span class="line"><span class="comment">//            os.write(buff, 0, len);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        IOUtils.copy(fis, os);</span><br><span class="line"></span><br><span class="line">        fis.close();</span><br></pre></td></tr></table></figure>
+<h1 id=""><a href="#" class="headerlink" title=" "></a> </h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jpcly.cn">jpc901</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jpcly.cn/archives/ac012cb0.html">https://jpcly.cn/archives/ac012cb0.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jpcly.cn" target="_blank">贾小白博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaWeb/">JavaWeb</a><a class="post-meta__tags" href="/tags/Servlet/">Servlet</a><a class="post-meta__tags" href="/tags/Request/">Request</a><a class="post-meta__tags" href="/tags/Response/">Response</a></div><div class="post_share"><div class="social-share" data-image="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215434.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215434.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215417.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215417.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/78b18e67.html" title="JSP"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JSP</div></div></a></div><div class="next-post pull-right"><a href="/archives/bc07bc32.html" title="Servlet笔记"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s4..jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Servlet笔记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/bc07bc32.html" title="Servlet笔记"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s4..jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-20</div><div class="title">Servlet笔记</div></div></a></div><div><a href="/archives/662e5bc3.html" title="JDBC基础"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-03</div><div class="title">JDBC基础</div></div></a></div><div><a href="/archives/195cf5d1.html" title="Maven基础"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s4..jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-03</div><div class="title">Maven基础</div></div></a></div><div><a href="/archives/1bff3c65.html" title="MyBatis"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s4..jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-04</div><div class="title">MyBatis</div></div></a></div><div><a href="/archives/95ecbeba.html" title="Tomcat"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-20</div><div class="title">Tomcat</div></div></a></div><div><a href="/archives/78b18e67.html" title="JSP"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-20</div><div class="title">JSP</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Request-%E8%AF%B7%E6%B1%82-%E5%92%8CResponse-%E5%93%8D%E5%BA%94"><span class="toc-number">1.</span> <span class="toc-text">Request(请求)和Response(响应)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Request"><span class="toc-number">1.1.</span> <span class="toc-text">Request</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Request%E7%BB%A7%E6%89%BF%E4%BD%93%E7%B3%BB"><span class="toc-number">1.1.1.</span> <span class="toc-text">Request继承体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Request%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.2.</span> <span class="toc-text">Request获取请求数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Request%E9%80%9A%E7%94%A8%E6%96%B9%E5%BC%8F%E8%8E%B7%E5%8F%96%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.3.</span> <span class="toc-text">Request通用方式获取请求参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Request%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91"><span class="toc-number">1.1.4.</span> <span class="toc-text">Request请求转发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Response"><span class="toc-number">1.2.</span> <span class="toc-text">Response</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Response%E8%AE%BE%E7%BD%AE%E5%93%8D%E5%BA%94%E6%95%B0%E6%8D%AE%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.1.</span> <span class="toc-text">Response设置响应数据功能介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Response%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">Response重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E4%B8%8E%E8%BD%AC%E5%8F%91%E6%AF%94%E8%BE%83"><span class="toc-number">1.2.3.</span> <span class="toc-text">重定向与转发比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Response%E5%93%8D%E5%BA%94%E5%AD%97%E7%AC%A6"><span class="toc-number">1.2.4.</span> <span class="toc-text">Response响应字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Response%E5%93%8D%E5%BA%94%E5%AD%97%E8%8A%82"><span class="toc-number">1.2.5.</span> <span class="toc-text">Response响应字节</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text"> </span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By jpc901</div><div class="footer_custom_text"><div><a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/">鄂ICP备2022006987号-1</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>

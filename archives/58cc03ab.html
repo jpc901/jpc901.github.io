@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2-变量与常量(go基础) | 贾小白博客</title><meta name="author" content="jpc901"><meta name="copyright" content="jpc901"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="变量与常量变量声明变量的一般形式是使用 var 关键字。 123456789101112131415&amp;#x2F;&amp;#x2F; 方法一：声明一个变量, 默认的值是0    var a int&amp;#x2F;&amp;#x2F; 方法二：声明一个变量, 初始化一个值    var b int &amp;#x3D; 100&amp;#x2F;&amp;#x2F; 方法三：在初始化的时候，可以省去数据类型，通过"><link rel="shortcut icon" href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/031-perseus.png"><link rel="canonical" href="https://jpcly.cn/archives/58cc03ab.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-jjsoouLcGZ"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2-变量与常量(go基础)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-08-23 23:02:53'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220119090729.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="贾小白博客"><span class="site-name">贾小白博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2-变量与常量(go基础)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-23T03:26:21.000Z" title="发表于 2022-11-23 11:26:21">2022-11-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-08-23T15:02:53.630Z" title="更新于 2024-08-23 23:02:53">2024-08-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Golang/">Golang</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2-变量与常量(go基础)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="变量与常量"><a href="#变量与常量" class="headerlink" title="变量与常量"></a>变量与常量</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>声明变量的一般形式是使用 var 关键字。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：声明一个变量, 默认的值是0</span></span><br><span class="line">    <span class="keyword">var</span> a <span class="type">int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：声明一个变量, 初始化一个值</span></span><br><span class="line">    <span class="keyword">var</span> b <span class="type">int</span> = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法三：在初始化的时候，可以省去数据类型，通过值去自动匹配当前变量的数据类型</span></span><br><span class="line">    <span class="keyword">var</span> c = <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法四：(常用的方法) 省去var关键字，使用:=，既推导数据类型又赋值</span></span><br><span class="line">    <span class="comment">// 注: 短声明是在函数或方法内部使用, 不支持全局变量声明！！！！</span></span><br><span class="line">    e := <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明多个变量</span></span><br><span class="line">    <span class="keyword">var</span> x, y <span class="type">int</span> = <span class="number">100</span>, <span class="number">200</span></span><br></pre></td></tr></table></figure>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>定义一个常量，使用 const 关键字。常量定义的时候就要赋值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 常量(只读属性)</span></span><br><span class="line">    <span class="keyword">const</span> length <span class="type">int</span> = <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// const来定义枚举类型</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    BEIJING = <span class="number">0</span></span><br><span class="line">    SHANGHAI = <span class="number">1</span></span><br><span class="line">    SHENZHEN = <span class="number">2</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">break</span>      <span class="keyword">default</span>       <span class="function"><span class="keyword">func</span>     <span class="title">interface</span>   <span class="title">select</span></span></span><br><span class="line"><span class="keyword">case</span>       <span class="keyword">defer</span>         <span class="keyword">go</span>       <span class="keyword">map</span>         <span class="keyword">struct</span></span><br><span class="line"><span class="keyword">chan</span>       <span class="keyword">else</span>          <span class="keyword">goto</span>     <span class="keyword">package</span>     <span class="keyword">switch</span></span><br><span class="line"><span class="keyword">const</span>      <span class="keyword">fallthrough</span>   <span class="keyword">if</span>       <span class="keyword">range</span>       <span class="keyword">type</span></span><br><span class="line"><span class="keyword">continue</span>   <span class="keyword">for</span>           <span class="keyword">import</span>   <span class="keyword">return</span>      <span class="keyword">var</span></span><br></pre></td></tr></table></figure>
+<h1 id="make和new的区别"><a href="#make和new的区别" class="headerlink" title="make和new的区别"></a>make和new的区别</h1><h2 id="new函数"><a href="#new函数" class="headerlink" title="new函数"></a>new函数</h2><p>内置函数 <code>new</code> 分配内存。该函数只接受一个参数，该参数是一个任意类型(包括自定义类型)，而不是值，返回指向该类型新分配零值的指针。</p>
+<p>使用 <code>new</code> 函数首先会分配内存，并设置类型零值，最后返回指向该类型新分配零值的指针。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	num := <span class="built_in">new</span>(<span class="type">int</span>)</span><br><span class="line">	<span class="comment">// 打印出类型的值</span></span><br><span class="line">	fmt.Println(*num)  <span class="comment">// 0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="make-函数"><a href="#make-函数" class="headerlink" title="make 函数"></a>make 函数</h2><p>内置函数 <code>make</code> 只能分配和初始化类型为 <code>slice</code> 、 <code>map</code> 或 <code>chan</code> 的对象。与 <code>new</code> 一样，第一个参数是类型，而不是值。与 <code>new</code> 不同， <code>make</code> 的返回类型与其参数的类型相同，而不是指向它的指针。结果取决于类型：</p>
+<ul>
+<li><code>slice</code>：size 指定长度。切片的容量等于其长度。可提供第三个参数以指定不同的容量；它不能小于长度。</li>
+<li><code>map</code>：为空映射分配足够的空间来容纳指定数量的元素。可以省略大小，在这种情况下，分配一个小的起始大小。</li>
+<li><code>chan</code>：使用指定的缓冲区容量初始化通道的缓冲区。如果为零，或者忽略了大小，则通道是无缓冲的。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// slice</span></span><br><span class="line">a := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">2</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// map</span></span><br><span class="line">b := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// chan</span></span><br><span class="line">c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="new-和-make-的区别"><a href="#new-和-make-的区别" class="headerlink" title="new 和 make 的区别"></a>new 和 make 的区别</h2><p><code>new</code>：为所有的类型分配内存，并初始化为零值，返回指针。</p>
+<p><code>make</code>：只能为 <code>slice</code> 、 <code>map</code> 、 <code>chan</code> 分配内存，并初始化，返回的是类型。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://jpcly.cn">jpc901</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://jpcly.cn/archives/58cc03ab.html">https://jpcly.cn/archives/58cc03ab.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jpcly.cn" target="_blank">贾小白博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Golang/">Golang</a><a class="post-meta__tags" href="/tags/Go/">Go</a></div><div class="post_share"><div class="social-share" data-image="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215434.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215434.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215417.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/QQ图片20220222215417.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/91d70fca.html" title="3-基础数据类型(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">3-基础数据类型(go基础)</div></div></a></div><div class="next-post pull-right"><a href="/archives/41c38990.html" title="1-什么是Go语言(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">1-什么是Go语言(go基础)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/41c38990.html" title="1-什么是Go语言(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">1-什么是Go语言(go基础)</div></div></a></div><div><a href="/archives/2b7fbed4.html" title="12-线程同步(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s4..jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">12-线程同步(go基础)</div></div></a></div><div><a href="/archives/8887c6d6.html" title="13-错误与异常(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">13-错误与异常(go基础)</div></div></a></div><div><a href="/archives/4c33ecfb.html" title="10-协程和通道(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">10-协程和通道(go基础)</div></div></a></div><div><a href="/archives/88b8ac59.html" title="4-容器类型(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/s2.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">4-容器类型(go基础)</div></div></a></div><div><a href="/archives/138d9d44.html" title="5-指针(go基础)"><img class="cover" src="https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-23</div><div class="title">5-指针(go基础)</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">变量与常量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.3.</span> <span class="toc-text">关键字</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#make%E5%92%8Cnew%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">make和new的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#new%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">new函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#make-%E5%87%BD%E6%95%B0"><span class="toc-number">2.2.</span> <span class="toc-text">make 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#new-%E5%92%8C-make-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.3.</span> <span class="toc-text">new 和 make 的区别</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://jiapengcheng.obs.cn-north-4.myhuaweicloud.com/img/1103346.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By jpc901</div><div class="footer_custom_text"><div><a target="_blank" rel="noopener external nofollow noreferrer" href="https://beian.miit.gov.cn/">鄂ICP备2022006987号-1</a></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
